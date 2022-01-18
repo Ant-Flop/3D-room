@@ -8,10 +8,7 @@ const defaultState = {
 export const sceneDataReducer = (state = defaultState, action) => {
     switch(action.type) {
         case UPDATE_SCENE_DATA:
-            return {
-                ...state,
-                data: action.payload
-            };
+            state.models.push(action.payload);
         default:
             return state;
     }

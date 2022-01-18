@@ -14,22 +14,15 @@ const listItemStyle = {
     padding: 0
 }
 
-const modelData = {
-    id: '',
-    scale: [],
-    position: [],
-    color: ''
-}
-
 
 export const ToolBar = () => {
     const dispatch = useDispatch();
     const sceneData = useSelector(state => state.sceneData)
     const createBox = () => {
-        let id = sceneData.models.length > 0 ? sceneData.models[sceneData.models.length - 1].id : 0;
+        let id = sceneData.models.length > 0 ? sceneData.models[sceneData.models.length - 1].id + 1 : 0;
         let scale = [1, 1, 1];
-        let position = [1, 0, 1];
-        let color = 'blue';
+        let position = [Math.random() * 5, Math.random() * 5, Math.random() * 5];
+        let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
         dispatch(updateSceneData({
                 id, scale, position, color
             }
@@ -37,7 +30,6 @@ export const ToolBar = () => {
 
 
     }
-    console.log(sceneData.models);
 
     return (
         <Paper style={{width: 300, height: 600, background: "#cbc2c2"}}>
