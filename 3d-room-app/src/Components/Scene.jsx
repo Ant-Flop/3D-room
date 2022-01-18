@@ -4,10 +4,11 @@ import { OrbitControls } from "@react-three/drei";
 import {Paper} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
+
+
 export const Scene = () => {
     const sceneData = useSelector(state => state.sceneData)
     const Box = (box) => {
-        console.log(box.id)
         return (
             <mesh key={box.id + '-mesh-box'} scale={box.scale} position={box.position} >
                 <boxBufferGeometry attach="geometry"/>
@@ -18,7 +19,7 @@ export const Scene = () => {
 
 
 
-    let boxesCreator = sceneData.models.map(model => <Box id={model.id}  scale={model.scale} position={model.position} color={model.color} /> )
+    let boxesCreator = sceneData.map(model => <Box id={model.id}  scale={model.scale} position={model.position} color={model.color} /> )
     return (
         <Paper style={{height: 600, width: 600}}>
         <Canvas camera={{ position: [10, 10, 10] }}>

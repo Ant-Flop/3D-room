@@ -5,10 +5,12 @@ const defaultState = {
     models: []
 }
 
-export const sceneDataReducer = (state = defaultState, action) => {
+export const sceneDataReducer = (state = defaultState.models, action) => {
     switch(action.type) {
         case UPDATE_SCENE_DATA:
-            state.models.push(action.payload);
+            console.log(state)
+            state.push(action.payload);
+
         default:
             return state;
     }
