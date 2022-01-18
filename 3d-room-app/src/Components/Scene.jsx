@@ -2,20 +2,28 @@ import React from "react"
 import {Canvas} from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import {Paper} from "@material-ui/core";
-import {useSelector} from "react-redux";
-
+import {useDispatch, useSelector} from "react-redux";
+import { useRef } from 'react';
+import {updateSceneData} from "../redux/reducers/SceneDataReducer";
 
 
 export const Scene = () => {
-    const sceneData = useSelector(state => state.sceneData)
+    const sceneData = useSelector(state => state.sceneData);
+    const callback = (box) => {
+        //box.color = "#ebe599";
+        console.log(box.color)
+    }
     const Box = (box) => {
         return (
-            <mesh key={box.id + '-mesh-box'} scale={box.scale} position={box.position} >
+            <mesh key={box.id + '-mesh-box'} scale={box.scale} position={box.position} onClick={callback.bind(true, box)}>
                 <boxBufferGeometry attach="geometry"/>
                 <meshLambertMaterial attach="material" color={box.color} />
             </mesh>
         )
     }
+
+
+
 
 
 
