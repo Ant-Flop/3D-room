@@ -6,7 +6,7 @@ import {Divider, Paper} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Slider from "@material-ui/core/Slider";
 import {useDispatch, useSelector} from "react-redux";
-import {updateSceneData} from "../redux/reducers/SceneDataReducer";
+import {createSceneData} from "../redux/reducers/SceneDataReducer";
 
 const listItemStyle = {
     display: 'flex',
@@ -19,11 +19,11 @@ export const ToolBar = () => {
     const dispatch = useDispatch();
     const sceneData = useSelector(state => state.sceneData);
     const createBox = () => {
-        let id = sceneData.length > 0 ? sceneData[sceneData.length - 1].id + 1 : 0;
+        let id = sceneData.models.length > 0 ? sceneData.models[sceneData.models.length - 1].id + 1 : 0;
         let scale = [1, 1, 1];
         let position = [Math.random() * 10 - 5, Math.random() * 5, Math.random() * 10 - 5];
         let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
-        dispatch(updateSceneData({
+        dispatch(createSceneData({
                 id, scale, position, color
             }
         ))

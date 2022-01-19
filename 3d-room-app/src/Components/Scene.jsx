@@ -9,13 +9,18 @@ import {updateSceneData} from "../redux/reducers/SceneDataReducer";
 
 export const Scene = () => {
     const sceneData = useSelector(state => state.sceneData);
+    const dispatch = useDispatch();
+
     const callback = (box) => {
-        //box.color = "#ebe599";
-        console.log(box.color)
+        let id = box.id;
+        dispatch(updateSceneData({
+            id
+        }))
+        console.log(box)
     }
     const Box = (box) => {
         return (
-            <mesh key={box.id + '-mesh-box'} scale={box.scale} position={box.position} onClick={callback.bind(true, box)}>
+            <mesh key={box.id + '-mesh-box'} scale={box.scale} position={box.position} onClick={callback.bind(this, box)}>
                 <boxBufferGeometry attach="geometry"/>
                 <meshLambertMaterial attach="material" color={box.color} />
             </mesh>
@@ -27,7 +32,7 @@ export const Scene = () => {
 
 
 
-    let boxesCreator = sceneData.map(model => <Box id={model.id}  scale={model.scale} position={model.position} color={model.color} /> )
+    let boxesCreator = sceneData.models.map(model => <Box id={model.id}  scale={model.scale} position={model.position} color={model.color} /> )
     return (
         <Paper style={{height: 600, width: 600}}>
         <Canvas camera={{ position: [10, 10, 10] }}>
