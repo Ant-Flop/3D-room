@@ -46,7 +46,6 @@ export const sceneDataReducer = (state = defaultState, action) => {
             }
         case UNSELECT_SCENE_DATA:
             if (action.type === UNSELECT_SCENE_DATA) {
-                console.log("fdf")
                 /*for(let i = 0; i < state.models.length; i++){
                     if(state.selected.id === state.models[i].id){
                         state.models[i].color = state.selected.previousColor;

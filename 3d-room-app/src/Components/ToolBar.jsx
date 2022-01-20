@@ -19,7 +19,6 @@ const listItemStyle = {
 export const ToolBar = () => {
     const dispatch = useDispatch();
     const sceneData = useSelector(state => state.sceneData);
-
     const createBox = () => {
         let id = sceneData.models.length > 0 ? sceneData.models[sceneData.models.length - 1].id + 1 : 0;
         let scale = [1, 1, 1];
@@ -30,49 +29,14 @@ export const ToolBar = () => {
             }
         ))
     }
-
     const configurationBox = (data) => {
-        let parameterName = null;
-        let parameterValue = null;
-        switch (data.target.name) {
-            case "width-slider":
-                //console.log(data.target.name, data.target.value)
-                parameterName = "width";
-                parameterValue = data.target.value;
-                dispatch(editSceneData({name: parameterName, value: parameterValue}))
-                break;
-            case "width-input":
-                parameterName = "width";
-                parameterValue = data.target.value;
-                dispatch(editSceneData({name: parameterName, value: parameterValue}))
-                break;
-            case "height-slider":
-                parameterName = "height";
-                parameterValue = data.target.value;
-                dispatch(editSceneData({name: parameterName, value: parameterValue}))
-                break;
-            case "height-input":
-                parameterName = "height";
-                parameterValue = data.target.value;
-                dispatch(editSceneData({name: parameterName, value: parameterValue}))
-                break;
-            case "depth-slider":
-                parameterName = "depth";
-                parameterValue = data.target.value;
-                dispatch(editSceneData({name: parameterName, value: parameterValue}))
-                break;
-            case "depth-input":
-                parameterName = "depth";
-                parameterValue = data.target.value;
-                dispatch(editSceneData({name: parameterName, value: parameterValue}))
-                break;
-        }
+        let parameterName = data.target.name.split('-')[0];
+        let parameterValue = data.target.value;
+        dispatch(editSceneData({name: parameterName, value: parameterValue}))
     }
-
     const getDisabled = () => {
         if (sceneData.selected.id === null) return {disabled: true}
     }
-
     return (
         <Paper key={"configuration-panel-paper"} style={{width: 300, height: 600, background: "#cbc2c2"}}>
             <Box>
