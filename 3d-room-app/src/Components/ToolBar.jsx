@@ -42,20 +42,30 @@ export const ToolBar = () => {
                 dispatch(editSceneData({name: parameterName, value: parameterValue}))
                 break;
             case "width-input":
-                //console.log(data.target.name, data.target.value)
+                parameterName = "width";
+                parameterValue = data.target.value;
+                dispatch(editSceneData({name: parameterName, value: parameterValue}))
                 break;
-            /*case "height-slider":
-                console.log(data.target.name, data.target.value)
+            case "height-slider":
+                parameterName = "height";
+                parameterValue = data.target.value;
+                dispatch(editSceneData({name: parameterName, value: parameterValue}))
                 break;
             case "height-input":
-                console.log(data.target.name, data.target.value)
+                parameterName = "height";
+                parameterValue = data.target.value;
+                dispatch(editSceneData({name: parameterName, value: parameterValue}))
                 break;
             case "depth-slider":
-                console.log(data.target.name, data.target.value)
+                parameterName = "depth";
+                parameterValue = data.target.value;
+                dispatch(editSceneData({name: parameterName, value: parameterValue}))
                 break;
             case "depth-input":
-                console.log(data.target.name, data.target.value)
-                break;*/
+                parameterName = "depth";
+                parameterValue = data.target.value;
+                dispatch(editSceneData({name: parameterName, value: parameterValue}))
+                break;
         }
     }
 
@@ -85,30 +95,49 @@ export const ToolBar = () => {
                                                                            type={"number"}
                                                                            value={sceneData.selected.width}
                                                                            name={"width-input"}
-                                                                           onChange={configurationBox.bind(this)} {...getDisabled()}/></ListItem>
+                                                                           max={300}
+                                                                           onChange={configurationBox.bind(this)}
+                                                                           {...getDisabled()}
+                        /></ListItem>
                     </div>
-                    {/*<div key={"configuration-height"} style={listItemStyle}>
+                    <div key={"configuration-height"} style={listItemStyle}>
                         <ListItem key={"configuration-height-style"} style={{width: 70}}>height</ListItem>
-                        <ListItem key={"configuration-height-slider"}><Slider
+                        <ListItem key={"configuration-height-slider"}><Slider value={sceneData.selected.height}
                                                                               aria-label="Default"
                                                                               valueLabelDisplay="auto"
                                                                               name={"height-slider"}
+                                                                              max={300}
                                                                               {...getDisabled()}
-                                                                              onChange={configurationBox.bind(this)}/></ListItem>
-                        <ListItem key={"configuration-height-input"}><input style={{width: 100}} name={"height-input"}
-                                                                            onChange={configurationBox.bind(this)} {...getDisabled()}/></ListItem>
+                                                                              onChange={configurationBox.bind(this)}
+                        /></ListItem>
+                        <ListItem key={"configuration-height-input"}><input style={{width: 100}}
+                                                                            type={"number"}
+                                                                            value={sceneData.selected.height}
+                                                                            name={"height-input"}
+                                                                            max={300}
+                                                                            onChange={configurationBox.bind(this)}
+                                                                            {...getDisabled()}
+                        /></ListItem>
                     </div>
                     <div key={"configuration-depth"} style={listItemStyle}>
                         <ListItem key={"configuration-depth-style"} style={{width: 70}}>depth</ListItem>
-                        <ListItem key={"configuration-depth-slider"}><Slider
+                        <ListItem key={"configuration-depth-slider"}><Slider value={sceneData.selected.depth}
                                                                              aria-label="Default"
                                                                              valueLabelDisplay="auto"
                                                                              name={"depth-slider"}
+                                                                             max={300}
                                                                              {...getDisabled()}
-                                                                             onChange={configurationBox.bind(this)}/></ListItem>
-                        <ListItem key={"configuration-depth-input"}><input style={{width: 100}} name={"depth-input"}
-                                                                           onChange={configurationBox.bind(this)} {...getDisabled()}/></ListItem>
-                    </div>*/}
+                                                                             onChange={configurationBox.bind(this)}
+                        /></ListItem>
+                        <ListItem key={"configuration-depth-input"}><input style={{width: 100}}
+                                                                           type={"number"}
+                                                                           value={sceneData.selected.depth}
+                                                                           name={"depth-input"}
+                                                                           max={300}
+                                                                           onChange={configurationBox.bind(this)}
+                                                                           {...getDisabled()}
+                        /></ListItem>
+                    </div>
                 </List>
             </Box>
         </Paper>
