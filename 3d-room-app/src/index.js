@@ -18,7 +18,6 @@ const RerenderDOM = () => {
 RerenderDOM();
 
 store.subscribe(() =>{
-    console.log('change')
     RerenderDOM();
 })
 
